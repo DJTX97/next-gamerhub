@@ -10,7 +10,7 @@ const options = {
 };
 
 export default async function Game({ params }) {
-  console.log(params);
+  //console.log(params);
   const url = `https://mmo-games.p.rapidapi.com/game?id=${params.game[0]}`;
 
   const fetchData = async () => {
