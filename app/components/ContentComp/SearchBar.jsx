@@ -29,7 +29,7 @@ export default function SearchBar() {
     const searchQuery = inputValue.trim();
     if (searchQuery !== "") {
       const matchingGame = games.find(
-        (game) => game.title.toLowerCase().includes(inputValue.toLowerCase()) 
+        (game) => game.title.toLowerCase() === inputValue.toLowerCase()
       );
       if (matchingGame) {
         router.push(`/games/${matchingGame.id}/${matchingGame.title.replace(/ /g, "_").replace(/[^a-zA-Z0-9_]/g, "")}`);
