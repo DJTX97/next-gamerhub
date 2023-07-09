@@ -32,7 +32,7 @@ export default function SearchBar() {
         (game) => game.title.toLowerCase() === inputValue.toLowerCase()
       );
       if (matchingGame) {
-        router.push(`/games/${matchingGame.id}`);
+        router.push(`/games/${matchingGame.id}/${matchingGame.title.replace(/ /g, "_").replace(/[^a-zA-Z0-9_]/g, "")}`);
       } else {
         router.push(`/missing`);
       }
