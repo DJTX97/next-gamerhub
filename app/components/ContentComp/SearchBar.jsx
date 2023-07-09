@@ -57,14 +57,14 @@ export default function SearchBar() {
   }, [inputValue]);
 
   return (
-    <div className="text-[18px] font-normal text-theme_black">
-      <div className="h-9 flex">
+    <div className="text-[18px] 2xl:text-2xl font-normal text-theme_black">
+      <div className="h-9 2xl:h-12 flex">
         <button
-          className="w-10 md:w-14 flex justify-center items-center bg-theme_light_gray hover:bg-theme_medium_gray rounded-l-full"
+          className="w-10 h-full md:w-14 flex justify-center items-center bg-theme_light_gray hover:bg-theme_medium_gray rounded-l-full"
           onClick={handleSearchButtonClick}
         >
           <svg
-            className="w-6 h-6 fill-current text-theme_white"
+            className="h-6 2xl:h-8 fill-current text-theme_white"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -77,7 +77,7 @@ export default function SearchBar() {
           </svg>
         </button>
         <input
-          className="w-32 md:w-56 pl-2 focus:outline-none rounded-r-full"
+          className="w-32 md:w-56 2xl:w-80 pl-2 focus:outline-none rounded-r-full"
           type="text"
           placeholder="Search"
           value={inputValue}
@@ -94,7 +94,7 @@ export default function SearchBar() {
                 onClick={() => setInputValue("")}
                 key={game.id}
               >
-                <li className="px-3 rounded-xl hover:bg-theme_light_gray">
+                <li className="px-3 2xl:py-3 rounded-xl hover:bg-theme_light_gray">
                   {game.title}
                 </li>
               </Link>

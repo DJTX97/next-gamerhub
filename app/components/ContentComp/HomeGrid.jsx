@@ -49,10 +49,10 @@ export default function ContentGrid({ games }) {
         ))}
       </div>
       {next < games.length && (
-        <div className="flex justify-center py-10 md:py-7">
+        <div className="flex justify-center py-10 md:py-7 2xl:py-14">
           <button
             onClick={loadMore}
-            className="w-72 md:w-[30rem] px-6 py-2 rounded-full bg-theme_medium_violet hover:bg-theme_light_violet text-white font-bold"
+            className="w-72 md:w-[30rem] px-6 py-2 2xl:py-5 rounded-full bg-theme_medium_violet hover:bg-theme_light_violet text-white font-bold 2xl:text-3xl"
           >
             Load More
           </button>
