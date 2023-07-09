@@ -29,10 +29,11 @@ export default function SearchBar() {
     const searchQuery = inputValue.trim();
     if (searchQuery !== "") {
       const matchingGame = games.find(
-        (game) => game.title.toLowerCase() === inputValue.toLowerCase()
+        (game) => game.title.toLowerCase().includes(inputValue.toLowerCase()) 
       );
       if (matchingGame) {
         router.push(`/games/${matchingGame.id}/${matchingGame.title.replace(/ /g, "_").replace(/[^a-zA-Z0-9_]/g, "")}`);
+        console.log(matchingGame);
       } else {
         router.push(`/missing`);
       }
@@ -90,7 +91,7 @@ export default function SearchBar() {
           <ul className="rounded-xl bg-theme_white">
             {suggestions.map((game) => (
               <Link
-                href={`/games/${game.id}`}
+                href={`/games/${game.id}/${game.title.replace(/ /g, "_").replace(/[^a-zA-Z0-9_]/g, "")}`}
                 onClick={() => setInputValue("")}
                 key={game.id}
               >
