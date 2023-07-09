@@ -1,4 +1,5 @@
 "use client";
+import { gamesStore } from "@/app/utils/gamesStore";
 import { useState, useEffect, useRef } from "react";
 import GameCard from "./GameCard";
 
@@ -13,9 +14,14 @@ export default function ContentGrid({ games }) {
 
   //load more handler
   const loadMore = () => {
-    setTimeout(scrollToBottom, 3);
+    setTimeout(scrollToBottom, 30);
     setNext(next + 3);
   };
+
+  //for tracking present available data and saving it to the store
+  useEffect(() => {
+    gamesStore.games = games;
+  }, [games]);
 
   useEffect(() => {
     //window.scrollTo(0, 0);
@@ -28,17 +34,17 @@ export default function ContentGrid({ games }) {
   }, []);
 
   return (
-    <div className="bg-theme_black rounded-b-2xl" ref={contentRef}>
+    <div className="w-full" ref={contentRef}>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 md:gap-y-10 2xl:gap-28 px-10 pb-3 md:pb-5 pt-10 md:pt-12 2xl:px-20">
         {games?.slice(0, next)?.map((game) => (
           <GameCard
             key={game.id}
+            id={game.id}
             thumbnail={game.thumbnail}
             title={game.title}
             genre={game.genre}
             release={game.release_date}
-            reviews={""}
-            rating={""}
+            platform={game.platform}
           />
         ))}
       </div>
@@ -46,7 +52,7 @@ export default function ContentGrid({ games }) {
         <div className="flex justify-center py-10 md:py-7">
           <button
             onClick={loadMore}
-            className="w-[20rem] md:w-[30rem] px-6 py-2 rounded-full bg-theme_medium_violet hover:bg-theme_light_violet text-white font-bold"
+            className="w-72 md:w-[30rem] px-6 py-2 rounded-full bg-theme_medium_violet hover:bg-theme_light_violet text-white font-bold"
           >
             Load More
           </button>
